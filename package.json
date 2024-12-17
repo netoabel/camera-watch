@@ -1,0 +1,26 @@
+{
+  "name": "camera-watch",
+  "version": "1.0.0",
+  "description": "Monitor camera usage on macOS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "camera",
+    "macos",
+    "monitor",
+    "watch"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}
