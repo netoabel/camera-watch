@@ -1,4 +1,4 @@
-# Camera State Monitor
+# camera-watch
 
 A Node.js module that monitors webcam usage state on Linux and macOS systems.
 
