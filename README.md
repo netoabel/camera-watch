@@ -17,8 +17,6 @@ watch({
   device: "video0", // optional, defaults to 'video0' on Linux; not required on macOS.
   onChange: (state) => {
     console.log("Camera state:", state);
-    // On Linux: 'On' or 'Off'
-    // On macOS: Power state from VDCAssistant
   },
   onError: (error) => {
     console.error("Error:", error);
