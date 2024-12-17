@@ -1,6 +1,6 @@
 {
   "name": "camera-watch",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Monitor camera usage on macOS and Linux",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,10 +14,11 @@
   "keywords": [
     "camera",
     "macos",
+    "linux",
     "monitor",
     "watch"
   ],
-  "author": "Your Name",
+  "author": "netoabel <abel.neto@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.24",
