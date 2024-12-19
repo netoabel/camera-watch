@@ -83,7 +83,7 @@ function spawnCameraStreamProcessMac(): ChildProcessWithoutNullStreams {
   return spawn("log", [
     "stream",
     "--predicate",
-    `subsystem contains "com.apple.cameracapture" and (composedMessage contains "AVCaptureSession" and (composedMessage contains "init" or composedMessage contains "stopRunning"))`,
+    `subsystem contains "com.apple.cameracapture" and (composedMessage contains "AVCaptureSession" and (composedMessage contains "AVCaptureSessionDidStartRunningNotification" or composedMessage contains "AVCaptureSessionDidStopRunningNotification"))`,
   ]);
 }
 
