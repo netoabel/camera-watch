@@ -72,7 +72,12 @@ function wacthStdout(process: ChildProcessWithoutNullStreams, config: Config): v
 }
 
 function getCameraStateFromLogMac(log: string): string {
-  return log.indexOf("Connect") !== -1 ? "On" : "Off";
+  const regex = /"VDCAssistant_Power_State"\s*=\s*([A-Za-z]+)/;
+  const match = regex.exec(log);
+
+  if (!match) return log.indexOf("Connect") !== -1 ? "On" : "Off";
+
+  return match ? match[1] : "";
 }
 
 function getCameraStateFromLogLinux(log: string, deviceName: string): string {
@@ -83,7 +88,7 @@ function spawnCameraStreamProcessMac(): ChildProcessWithoutNullStreams {
   return spawn("log", [
     "stream",
     "--predicate",
-    `subsystem contains "com.apple.UVCExtension" and composedMessage contains "client"`,
+    `subsystem contains "com.apple.UVCExtension" and (composedMessage contains "client" or composedMessage contains "connect")`,
   ]);
 }
 
