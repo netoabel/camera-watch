@@ -27,8 +27,10 @@ function watchCameraLogsMac(config: Config): void {
   wacthStdout(logs, {
     onChange: (data) => {
       const cameraState = getCameraStateFromLogMac(data);
-      currentCameraState = cameraState;
-      config.onChange(cameraState);
+      if (cameraState) {
+        currentCameraState = cameraState;
+        config.onChange(cameraState);
+      }
     },
     onError: config.onError,
   });
@@ -71,8 +73,10 @@ function wacthStdout(process: ChildProcessWithoutNullStreams, config: Config): v
   });
 }
 
-function getCameraStateFromLogMac(log: string): string {
-  return log.indexOf("AVCaptureSessionDidStartRunningNotification") !== -1 ? "On" : "Off";
+function getCameraStateFromLogMac(log: string): string | null {
+  if (log.indexOf("AVCaptureSessionDidStartRunningNotification") !== -1) return "On";
+  if (log.indexOf("AVCaptureSessionDidStopRunningNotification") !== -1) return "Off";
+  return null;
 }
 
 function getCameraStateFromLogLinux(log: string, deviceName: string): string {
