@@ -74,9 +74,8 @@ function wacthStdout(process: ChildProcessWithoutNullStreams, config: Config): v
 }
 
 function getCameraStateFromLogMac(log: string): string | null {
-  if (log.indexOf("AVCaptureSessionDidStartRunningNotification") !== -1) return "On";
-  if (log.indexOf("AVCaptureSessionDidStopRunningNotification") !== -1) return "Off";
-  return null;
+  if (log.indexOf("Filtering") !== -1) return null;
+  return log.indexOf("AVCaptureSessionDidStartRunningNotification") !== -1 ? "On" : "Off";
 }
 
 function getCameraStateFromLogLinux(log: string, deviceName: string): string {
